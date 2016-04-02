@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 23
@@ -32,11 +33,21 @@ buildscript {
     ext.kotlin_version = '1.0.1-2'
     repositories {
         mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.novoda:bintray-release:0.3.4'
     }
 }
 repositories {
     mavenCentral()
+}
+publish {
+    userOrg = 'kidach1'
+    groupId = 'com.kidach1'
+    artifactId = 'AndroidTinderSwipe'
+    publishVersion = '1.0.0'
+    desc = 'AndroidTinderSwipe'
+    website = 'https://github.com/kidach1/AndroidTinderSwipe'
 }
