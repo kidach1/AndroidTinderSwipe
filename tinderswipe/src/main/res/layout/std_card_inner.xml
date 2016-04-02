@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/global_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/title"
+        style="@android:style/TextAppearance.Large.Inverse"
+        android:textColor="@android:color/primary_text_light"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/card_bg"
+        tools:text="Title"
+        android:padding="10dp"/>
+
+    <View
+        android:id="@+id/divider_title"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/title"
+        android:background="@color/card_outline"
+        />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider_title"
+        android:layout_alignWithParentIfMissing="true"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/picture1"/>
+
+    <View
+        android:id="@+id/divider_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/image"
+        android:background="@color/card_outline" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/divider_bottom"
+        android:background="@color/card_bg"
+        />
+
+    <TextView
+        android:id="@+id/description"
+        style="@android:style/TextAppearance.Inverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/image"
+        android:gravity="center_vertical"
+        android:fontFamily="sans-serif-condensed"
+        android:ellipsize="end"
+        android:padding="10dp"
+        android:lines="1"
+        android:textColor="@android:color/secondary_text_light"
+        tools:text="This is the description, it is a long description, as you can see"/>
+
+
+    <View
+        android:id="@+id/item_swipe_left_indicator"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:alpha="0"
+        android:background="@drawable/like"
+        />
+
+    <View
+        android:id="@+id/item_swipe_right_indicator"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right"
+        android:alpha="0"
+        android:background="@drawable/nope"/>
+
+</RelativeLayout>
