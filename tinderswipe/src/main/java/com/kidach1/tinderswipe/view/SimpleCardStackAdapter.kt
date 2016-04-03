@@ -1,11 +1,13 @@
 package com.kidach1.tinderswipe.view
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.util.Log
 
 import com.kidach1.tinderswipe.R
 import com.kidach1.tinderswipe.model.CardModel
@@ -21,8 +23,8 @@ class SimpleCardStackAdapter(val mContext: Context) : CardStackAdapter(mContext)
 
         (convertView?.findViewById(R.id.titleView) as TextView).text = model.name
         (convertView?.findViewById(R.id.descriptionView) as TextView).text = model.description
-//        val imageView = (convertView?.findViewById(R.id.imageView) as ImageView);
-//        Picasso.with(mContext).load(model.cardImageUrl).into(imageView);
+        var imageView = convertView!!.findViewById(R.id.imageView) as ImageView
+        Picasso.with(context).load(model.cardImageUrl).into(imageView)
 
         return convertView!!
     }

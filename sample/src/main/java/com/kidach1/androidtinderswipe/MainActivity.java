@@ -28,15 +28,13 @@ public class MainActivity extends AppCompatActivity {
 
         adapter.add(new CardModel("Title1", "Description goes here", "http://img.peco-japan.com/image/93127"));
         adapter.add(new CardModel("Title2", "Description goes here", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRmZfrA31MKjExHzG83ycVshteNDg5hUAoGZ30HzTu9so_PjXnftQ"));
-        adapter.add(new CardModel("Title3", "Description goes here", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTe8kAEiKraXeXsdtVi6WnfO2dl43niQ17JUChhtrezZUFFgRoYmQ"));
+        adapter.add(new CardModel("Title3", "Description goes here", "https://pbs.twimg.com/profile_images/3129300560/9c13c196eaa4f1940641f2cf08878727.jpeg"));
+        adapter.add(new CardModel("Title4", "Description goes here", "https://pbs.twimg.com/profile_images/581025665727655936/9CnwZZ6j.jpg"));
         adapter.add(new CardModel("Title1", "Description goes here", "http://img.peco-japan.com/image/93127"));
         adapter.add(new CardModel("Title2", "Description goes here", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRmZfrA31MKjExHzG83ycVshteNDg5hUAoGZ30HzTu9so_PjXnftQ"));
-        adapter.add(new CardModel("Title3", "Description goes here", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTe8kAEiKraXeXsdtVi6WnfO2dl43niQ17JUChhtrezZUFFgRoYmQ"));
-        adapter.add(new CardModel("Title1", "Description goes here", "http://img.peco-japan.com/image/93127"));
-        adapter.add(new CardModel("Title2", "Description goes here", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRmZfrA31MKjExHzG83ycVshteNDg5hUAoGZ30HzTu9so_PjXnftQ"));
-        adapter.add(new CardModel("Title3", "Description goes here", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTe8kAEiKraXeXsdtVi6WnfO2dl43niQ17JUChhtrezZUFFgRoYmQ"));
+        adapter.add(new CardModel("Title3", "Description goes here", "https://pbs.twimg.com/profile_images/3129300560/9c13c196eaa4f1940641f2cf08878727.jpeg"));
 
-        CardModel cardModel = new CardModel("Title3", "Description goes here", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTe8kAEiKraXeXsdtVi6WnfO2dl43niQ17JUChhtrezZUFFgRoYmQ");
+        CardModel cardModel = new CardModel("Title3", "Description goes here", "https://pbs.twimg.com/profile_images/581025665727655936/9CnwZZ6j.jpg");
         cardModel.setOnClickListener(new CardModel.OnClickListener() {
             @Override
             public void OnClickListener() {

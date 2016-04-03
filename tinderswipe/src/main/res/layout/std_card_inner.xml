@@ -32,8 +32,8 @@
         android:layout_height="300dp"
         android:layout_below="@id/divider_title"
         android:layout_alignWithParentIfMissing="true"
-        android:scaleType="center"
-        tools:src="@drawable/picture1"/>
+        android:scaleType="centerCrop"
+        />
 
     <View
         android:id="@+id/divider_bottom"
