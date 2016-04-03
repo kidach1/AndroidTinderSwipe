@@ -1,12 +1,15 @@
 package com.kidach1.androidtinderswipe;
 
 import android.content.DialogInterface;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.kidach1.tinderswipe.model.CardModel;
 import com.kidach1.tinderswipe.view.CardContainer;
 import com.kidach1.tinderswipe.view.SimpleCardStackAdapter;
@@ -45,19 +48,21 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onLike(final CardContainer.OnLikeListener cb) {
                     Log.i(TAG, "I like the card");
-                    new AlertDialog.Builder(MainActivity.this)
-                            .setTitle("title")
-                            .setMessage("message")
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    new MaterialDialog.Builder(MainActivity.this)
+                            .title(R.string.dialog_title)
+                            .content(R.string.dialog_content)
+                            .positiveText(R.string.dialog_positive_text)
+                            .negativeText(R.string.dialog_negative_text)
+                            .onPositive(new MaterialDialog.SingleButtonCallback() {
                                 @Override
-                                public void onClick(DialogInterface dialog, int which) {
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                                     Log.i(TAG, "I choose positive.");
                                     cb.choose();
                                 }
                             })
-                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            .onNegative(new MaterialDialog.SingleButtonCallback() {
                                 @Override
-                                public void onClick(DialogInterface dialog, int which) {
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                                     Log.i(TAG, "I choose negative.");
                                     cb.unchoose();
                                 }

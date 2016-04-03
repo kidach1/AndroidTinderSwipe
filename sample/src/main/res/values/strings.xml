@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AndroidTinderSwipe</string>
+    <string name="dialog_title">Dialog</string>
+    <string name="dialog_content">content!!</string>
+    <string name="dialog_positive_text">positive</string>
+    <string name="dialog_negative_text">negative</string>
 </resources>
