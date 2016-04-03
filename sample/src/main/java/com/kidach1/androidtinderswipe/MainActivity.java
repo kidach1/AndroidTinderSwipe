@@ -11,11 +11,19 @@ import com.kidach1.tinderswipe.model.CardModel;
 import com.kidach1.tinderswipe.view.CardContainer;
 import com.kidach1.tinderswipe.view.SimpleCardStackAdapter;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private CardContainer mCardContainer;
+    private List<String> imgs = Arrays.asList(
+            "http://img.peco-japan.com/image/93127",
+            "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRmZfrA31MKjExHzG83ycVshteNDg5hUAoGZ30HzTu9so_PjXnftQ",
+            "https://pbs.twimg.com/profile_images/3129300560/9c13c196eaa4f1940641f2cf08878727.jpeg",
+            "https://pbs.twimg.com/profile_images/581025665727655936/9CnwZZ6j.jpg"
+    );
 
-    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -23,51 +31,46 @@ public class MainActivity extends AppCompatActivity {
         mCardContainer = (CardContainer) findViewById(R.id.layoutview);
         SimpleCardStackAdapter adapter = new SimpleCardStackAdapter(this);
 
-        adapter.add(new CardModel("Title1", "Description goes here", "http://img.peco-japan.com/image/93127"));
-        adapter.add(new CardModel("Title2", "Description goes here", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRmZfrA31MKjExHzG83ycVshteNDg5hUAoGZ30HzTu9so_PjXnftQ"));
-        adapter.add(new CardModel("Title3", "Description goes here", "https://pbs.twimg.com/profile_images/3129300560/9c13c196eaa4f1940641f2cf08878727.jpeg"));
-        adapter.add(new CardModel("Title4", "Description goes here", "https://pbs.twimg.com/profile_images/581025665727655936/9CnwZZ6j.jpg"));
-        adapter.add(new CardModel("Title1", "Description goes here", "http://img.peco-japan.com/image/93127"));
-        adapter.add(new CardModel("Title2", "Description goes here", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRmZfrA31MKjExHzG83ycVshteNDg5hUAoGZ30HzTu9so_PjXnftQ"));
-        adapter.add(new CardModel("Title3", "Description goes here", "https://pbs.twimg.com/profile_images/3129300560/9c13c196eaa4f1940641f2cf08878727.jpeg"));
+        for (int i = 0; i < 8; i++) {
+            CardModel cardModel = new CardModel("TinderSwipe", "Description for card.", imgs.get(i%4));
+            cardModel.setOnClickListener(new CardModel.OnClickListener() {
+                @Override
+                public void OnClickListener() {
+                    Log.i("Swipeable Cards", "I am pressing the card");
+                }
+            });
 
-        CardModel cardModel = new CardModel("Title3", "Description goes here", "https://pbs.twimg.com/profile_images/581025665727655936/9CnwZZ6j.jpg");
-        cardModel.setOnClickListener(new CardModel.OnClickListener() {
-            @Override
-            public void OnClickListener() {
-                Log.i("Swipeable Cards", "I am pressing the card");
-            }
-        });
+            cardModel.setOnCardDismissedListener(new CardModel.OnCardDismissedListener() {
+                @Override
+                public void onLike(final CardContainer.OnLikeListener cb) {
+                    Log.i("Swipeable Cards", "dissmiss the card");
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setTitle("title")
+                            .setMessage("message")
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    cb.choose();
+                                }
+                            })
+                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    cb.unchoose();
+                                }
+                            })
+                            .show();
+                }
 
-        cardModel.setOnCardDismissedListener(new CardModel.OnCardDismissedListener() {
-            @Override
-            public void onLike(final CardContainer.OnLikeListener cb) {
-                Log.i("Swipeable Cards", "dissmiss the card");
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("title")
-                        .setMessage("message")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                cb.choose();
-                            }
-                        })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                cb.unchoose();
-                            }
-                        })
-                        .show();
-            }
+                @Override
+                public void onDislike() {
+                    Log.i("Swipeable Cards", "I dislike the card");
+                }
+            });
 
-            @Override
-            public void onDislike() {
-                Log.i("Swipeable Cards", "I dislike the card");
-            }
-        });
+            adapter.add(cardModel);
 
-        adapter.add(cardModel);
+        }
 
         mCardContainer.setAdapter(adapter);
         mCardContainer.setOnSwipeListener(new CardContainer.onSwipeListener() {
