@@ -7,7 +7,7 @@
 
 ```build.gradle
 dependencies {
-    compile 'com.kidach1:AndroidTinderSwipe:1.0.4'
+    compile 'com.kidach1:AndroidTinderSwipe:1.0.6'
 }
 ```
 
