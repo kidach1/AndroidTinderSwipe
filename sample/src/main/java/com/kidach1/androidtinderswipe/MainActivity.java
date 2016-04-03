@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
             });
 
             cardModel.setOnCardDismissedListener(new CardModel.OnCardDismissedListener() {
-                // dissmiss for like
                 @Override
                 public void onLike(final CardContainer.OnLikeListener cb) {
                     Log.i(TAG, "I like the card");
