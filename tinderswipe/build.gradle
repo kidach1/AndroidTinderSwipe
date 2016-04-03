@@ -50,7 +50,7 @@ publish {
     userOrg = 'kidach1'
     groupId = 'com.kidach1'
     artifactId = 'AndroidTinderSwipe'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
     desc = 'AndroidTinderSwipe'
     website = 'https://github.com/kidach1/AndroidTinderSwipe'
 }
