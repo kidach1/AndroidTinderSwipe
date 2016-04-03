@@ -316,7 +316,7 @@ class CardContainer : AdapterView<ListAdapter> {
                 dx = x - mLastTouchX
                 dy = y - mLastTouchY
 
-                Log.i(TAG + ": Action move params", x.toString() + y.toString() + dx.toString() + dy.toString())
+                Log.i(TAG + ": Action move params x:", x.toString() + " y:" + y.toString() + " dx:" + dx.toString() + " dy:" + dy.toString())
 
                 if (Math.abs(dx) > mTouchSlop || Math.abs(dy) > mTouchSlop) {
                     mDragging = true
