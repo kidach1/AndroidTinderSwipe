@@ -21,6 +21,9 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -50,4 +53,7 @@ publish {
     publishVersion = '1.0.0'
     desc = 'AndroidTinderSwipe'
     website = 'https://github.com/kidach1/AndroidTinderSwipe'
+}
+afterEvaluate {
+    tasks.findByPath(":tinderswipe:mavenAndroidJavadocs").enabled = false
 }
