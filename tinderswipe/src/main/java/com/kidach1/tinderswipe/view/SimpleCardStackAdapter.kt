@@ -1,13 +1,11 @@
 package com.kidach1.tinderswipe.view
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.util.Log
 
 import com.kidach1.tinderswipe.R
 import com.kidach1.tinderswipe.model.CardModel

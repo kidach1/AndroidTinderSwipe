@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
             });
 
             adapter.add(cardModel);
-
         }
 
         mCardContainer.setAdapter(adapter);

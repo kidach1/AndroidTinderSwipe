@@ -45,13 +45,10 @@ class CardContainer : AdapterView<ListAdapter> {
             clearStack()
         }
     }
-    private val mRandom = Random()
     private val boundsRect = Rect()
     private val childRect = Rect()
     private val mMatrix = Matrix()
 
-
-    //TODO: determine max dynamically based on device speed
     private val mMaxVisible = 10
     private var mGestureDetector: GestureDetector? = null
     private var mFlingSlop: Int = 0
@@ -88,18 +85,15 @@ class CardContainer : AdapterView<ListAdapter> {
     private var mSwipeListener: onSwipeListener? = null
 
     constructor(context: Context) : super(context) {
-
         orientation = Orientation.Disordered
         gravity = Gravity.CENTER
         init()
-
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         initFromXml(attrs)
         init()
     }
-
 
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle) {
         initFromXml(attrs)
@@ -174,10 +168,9 @@ class CardContainer : AdapterView<ListAdapter> {
         mTopCard = null
     }
 
-    private // 最初の自動配置時の傾き
-            //        return (float) Math.toDegrees(mRandom.nextGaussian() * DISORDERED_MAX_ROTATION_RADIANS);
-    val disorderedRotation: Float
-        get() = Math.toDegrees(0.0).toFloat()
+    private val disorderedRotation: Float
+        get() = Math.toDegrees(0.0).toFloat() // 最初の自動配置時の傾き
+          //    Math.toDegrees(mRandom.nextGaussian() * DISORDERED_MAX_ROTATION_RADIANS)
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
@@ -391,8 +384,6 @@ class CardContainer : AdapterView<ListAdapter> {
         val pointerIndex: Int
         val x: Float
         val y: Float
-        val dx: Float
-        val dy: Float
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
                 mTopCard!!.getHitRect(childRect)
