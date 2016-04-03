@@ -369,6 +369,7 @@ class CardContainer : AdapterView<ListAdapter> {
     }
 
     private fun cancelAnimation(topCard: View) {
+
         val animator = ObjectAnimator.ofPropertyValuesHolder(topCard,
                 PropertyValuesHolder.ofFloat("translationX", 0.0f),
                 PropertyValuesHolder.ofFloat("translationY", 0.0f),
@@ -376,7 +377,8 @@ class CardContainer : AdapterView<ListAdapter> {
                 //                        PropertyValuesHolder.ofFloat("rotation", (float) Math.toDegrees(mRandom.nextGaussian() * DISORDERED_MAX_ROTATION_RADIANS)),
                 PropertyValuesHolder.ofFloat("rotation", Math.toDegrees(0.0).toFloat()),
                 PropertyValuesHolder.ofFloat("pivotX", topCard.width / 2.0f),
-                PropertyValuesHolder.ofFloat("pivotY", topCard.height / 2.0f)).setDuration(250)
+                PropertyValuesHolder.ofFloat("pivotY", topCard.height / 2.0f))
+                .setDuration(100)
         animator.interpolator = AccelerateInterpolator()
         animator.start()
     }
@@ -477,7 +479,7 @@ class CardContainer : AdapterView<ListAdapter> {
                     duration += 100
                 }
 
-                duration = Math.min(500, duration)
+//                duration = Math.min(500, duration)
 
                 mTopCard = getChildAt(childCount - 2)
                 val cardModel = adapter.getItem(childCount - 1) as CardModel
@@ -491,6 +493,7 @@ class CardContainer : AdapterView<ListAdapter> {
                             override fun choose() {
                                 val arbitraryVelocityX = 100f
                                 val arbitraryDuration: Long = 50
+                                Log.i(TAG, " duration:" + duration + " targetX:" + targetX + " targetY:" + targetY + " velocityX:" + velocityX)
                                 cardAnimate(topCard, arbitraryDuration, targetX, targetY, arbitraryVelocityX)
                             }
 
@@ -504,6 +507,7 @@ class CardContainer : AdapterView<ListAdapter> {
                         })
                     } else {
                         cardModel.onCardDismissedListener?.onDislike()
+                        Log.i(TAG, " duration:" + duration + " targetX:" + targetX + " targetY:" + targetY + " velocityX:" + velocityX)
                         cardAnimate(topCard, duration, targetX, targetY, velocityX)
                     }
                 } else {
