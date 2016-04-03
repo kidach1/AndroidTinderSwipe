@@ -3,7 +3,6 @@
 <img src="/SwayAnim1.gif" width="35%"> <img src="/SwayAnim2.gif" width="35%">
 
 
-
 ## Download
 
 ```build.gradle
@@ -15,7 +14,7 @@ dependencies {
 
 ## Usage
 
-### Set xml for card container.
+#### Set xml for card container.
 
 ```xml
 <com.kidach1.tinderswipe.view.CardContainer
@@ -25,20 +24,20 @@ dependencies {
     android:layout_weight="1"/>
 ```
 
-### Init CardModel.
+#### Init CardModel.
 
 ```java
 CardModel cardModel = new CardModel("TinderSwipe", "Description for card.", "http://example.com/example.png"); // title, desc, imgUrl.
 ```
 
-### Init CardStackAdapter and add model.
+#### Init CardStackAdapter and add model.
 
 ```java
 SimpleCardStackAdapter adapter = new SimpleCardStackAdapter(this);
 adapter.add(cardModel);
 ```
 
-### Init CardContainer and set adapter.
+#### Init CardContainer and set adapter.
 
 ```java
 mCardContainer = (CardContainer) findViewById(R.id.cardContainer);
@@ -47,7 +46,7 @@ mCardContainer.setAdapter(adapter);
 
 ## Custom
 
-### Add SwipeListener
+#### Add SwipeListener
 
 ```java
 mCardContainer.setOnSwipeListener(new CardContainer.onSwipeListener() {
@@ -63,7 +62,7 @@ mCardContainer.setOnSwipeListener(new CardContainer.onSwipeListener() {
 });
 ```
 
-### Add DissmissListener to CardModel
+#### Add DissmissListener to CardModel
 
 ```java
 cardModel.setOnCardDismissedListener(new CardModel.OnCardDismissedListener() {
@@ -106,6 +105,11 @@ cardModel.setOnCardDismissedListener(new CardModel.OnCardDismissedListener() {
 });
 ```
 
+
+
+## Thanks
+
+Inspired by [Swipeable-Cards](https://github.com/kikoso/Swipeable-Cards).
 
 License
 -------
