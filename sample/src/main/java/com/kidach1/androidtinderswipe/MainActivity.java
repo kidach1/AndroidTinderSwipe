@@ -67,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
                                     cb.unchoose();
                                 }
                             })
+                            .cancelListener(new DialogInterface.OnCancelListener() {
+                                @Override
+                                public void onCancel(DialogInterface dialog) {
+                                    Log.i(TAG, "cancel");
+                                    cb.unchoose();
+                                }
+                            })
                             .show();
                 }
 
