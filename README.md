@@ -48,7 +48,7 @@ cardContainer.setAdapter(cardAdapter);
 
 ## Custom
 
-#### Add SwipeListener
+#### Add SwipeListener to Container
 
 ```java
 private void addSwipeListener(final CardContainer cardContainer) {
