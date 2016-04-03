@@ -14,7 +14,7 @@ dependencies {
 
 ## Usage
 
-#### Set xml for card container.
+#### Set xml for card container
 
 ```xml
 <com.kidach1.tinderswipe.view.CardContainer
@@ -24,20 +24,20 @@ dependencies {
     android:layout_weight="1"/>
 ```
 
-#### Init CardModel.
+#### Init CardModel
 
 ```java
 CardModel cardModel = new CardModel("TinderSwipe", "Description for card.", "http://example.com/example.png"); // title, desc, imgUrl.
 ```
 
-#### Init CardStackAdapter and add model.
+#### Init CardStackAdapter and add model
 
 ```java
 SimpleCardStackAdapter adapter = new SimpleCardStackAdapter(this);
 adapter.add(cardModel);
 ```
 
-#### Init CardContainer and set adapter.
+#### Init CardContainer and set adapter
 
 ```java
 mCardContainer = (CardContainer) findViewById(R.id.cardContainer);
@@ -109,7 +109,7 @@ cardModel.setOnCardDismissedListener(new CardModel.OnCardDismissedListener() {
 
 ## Thanks
 
-Inspired by [Swipeable-Cards](https://github.com/kikoso/Swipeable-Cards).
+Inspired by `Swipeable-Cards` in [kikoso](https://github.com/kikoso).
 
 License
 -------
