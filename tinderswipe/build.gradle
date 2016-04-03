@@ -31,6 +31,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
 buildscript {
     ext.kotlin_version = '1.0.1-2'

@@ -2,12 +2,10 @@ package com.kidach1.androidtinderswipe;
 
 import android.content.DialogInterface;
 import android.content.res.Resources;
-import android.os.SystemClock;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 
@@ -26,21 +24,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.mainlayout);
 
         mCardContainer = (CardContainer) findViewById(R.id.layoutview);
-
-        Resources r = getResources();
-
         SimpleCardStackAdapter adapter = new SimpleCardStackAdapter(this);
 
-        adapter.add(new CardModel("Title1", "Description goes here", "Test", "http://img.peco-japan.com/image/93127"));
-        adapter.add(new CardModel("Title2", "Description goes here", "Test2", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRmZfrA31MKjExHzG83ycVshteNDg5hUAoGZ30HzTu9so_PjXnftQ"));
-        adapter.add(new CardModel("Title3", "Description goes here", "Test3", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTe8kAEiKraXeXsdtVi6WnfO2dl43niQ17JUChhtrezZUFFgRoYmQ"));
-        adapter.add(new CardModel("Title1", "Description goes here", "Test", "http://img.peco-japan.com/image/93127"));
-        adapter.add(new CardModel("Title2", "Description goes here", "Test2", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRmZfrA31MKjExHzG83ycVshteNDg5hUAoGZ30HzTu9so_PjXnftQ"));
-        adapter.add(new CardModel("Title3", "Description goes here", "Test3", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTe8kAEiKraXeXsdtVi6WnfO2dl43niQ17JUChhtrezZUFFgRoYmQ"));
-        adapter.add(new CardModel("Title1", "Description goes here", "Test", "http://img.peco-japan.com/image/93127"));
-        adapter.add(new CardModel("Title2", "Description goes here", "Test2", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRmZfrA31MKjExHzG83ycVshteNDg5hUAoGZ30HzTu9so_PjXnftQ"));
+        adapter.add(new CardModel("Title1", "Description goes here", "http://img.peco-japan.com/image/93127"));
+        adapter.add(new CardModel("Title2", "Description goes here", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRmZfrA31MKjExHzG83ycVshteNDg5hUAoGZ30HzTu9so_PjXnftQ"));
+        adapter.add(new CardModel("Title3", "Description goes here", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTe8kAEiKraXeXsdtVi6WnfO2dl43niQ17JUChhtrezZUFFgRoYmQ"));
+        adapter.add(new CardModel("Title1", "Description goes here", "http://img.peco-japan.com/image/93127"));
+        adapter.add(new CardModel("Title2", "Description goes here", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRmZfrA31MKjExHzG83ycVshteNDg5hUAoGZ30HzTu9so_PjXnftQ"));
+        adapter.add(new CardModel("Title3", "Description goes here", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTe8kAEiKraXeXsdtVi6WnfO2dl43niQ17JUChhtrezZUFFgRoYmQ"));
+        adapter.add(new CardModel("Title1", "Description goes here", "http://img.peco-japan.com/image/93127"));
+        adapter.add(new CardModel("Title2", "Description goes here", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRmZfrA31MKjExHzG83ycVshteNDg5hUAoGZ30HzTu9so_PjXnftQ"));
+        adapter.add(new CardModel("Title3", "Description goes here", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTe8kAEiKraXeXsdtVi6WnfO2dl43niQ17JUChhtrezZUFFgRoYmQ"));
 
-        CardModel cardModel = new CardModel("Title3", "Description goes here", "Test3", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTe8kAEiKraXeXsdtVi6WnfO2dl43niQ17JUChhtrezZUFFgRoYmQ");
+        CardModel cardModel = new CardModel("Title3", "Description goes here", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTe8kAEiKraXeXsdtVi6WnfO2dl43niQ17JUChhtrezZUFFgRoYmQ");
         cardModel.setOnClickListener(new CardModel.OnClickListener() {
             @Override
             public void OnClickListener() {

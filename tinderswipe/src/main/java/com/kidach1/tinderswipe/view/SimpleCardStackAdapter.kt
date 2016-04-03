@@ -4,12 +4,14 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 
 import com.kidach1.tinderswipe.R
 import com.kidach1.tinderswipe.model.CardModel
+import com.squareup.picasso.Picasso
 
-class SimpleCardStackAdapter(mContext: Context) : CardStackAdapter(mContext) {
+class SimpleCardStackAdapter(val mContext: Context) : CardStackAdapter(mContext) {
     override fun getCardView(position: Int, model: CardModel, convertView: View?, parent: ViewGroup): View {
         var convertView = convertView
         if (convertView == null) {
@@ -17,10 +19,11 @@ class SimpleCardStackAdapter(mContext: Context) : CardStackAdapter(mContext) {
             convertView = inflater.inflate(R.layout.std_card_inner, parent, false)
         }
 
-        //		((ImageView) convertView.findViewById(R.id.image)).setImageDrawable(model.getCardImageDrawable());
-        (convertView!!.findViewById(R.id.title) as TextView).text = model.tagline
-        (convertView.findViewById(R.id.description) as TextView).text = model.description
+        (convertView?.findViewById(R.id.titleView) as TextView).text = model.name
+        (convertView?.findViewById(R.id.descriptionView) as TextView).text = model.description
+        val imageView = (convertView?.findViewById(R.id.imageView) as ImageView);
+        Picasso.with(mContext).load(model.cardImageUrl).into(imageView);
 
-        return convertView
+        return convertView!!
     }
 }
