@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
                             .show();
                 }
 
-                // dissmiss for dislike
                 @Override
                 public void onDislike() {
                     Log.i(TAG, "I dislike the card");
