@@ -7,7 +7,7 @@
 
 ```build.gradle
 dependencies {
-    compile 'com.kidach1:AndroidTinderSwipe:1.0.6'
+    compile 'com.kidach1:AndroidTinderSwipe:1.0.7'
 }
 ```
 
@@ -27,21 +27,23 @@ dependencies {
 #### Init CardModel
 
 ```java
-CardModel cardModel = new CardModel("TinderSwipe", "Description for card.", "http://example.com/example.png"); // title, desc, imgUrl.
+CardModel cardModel = new CardModel("TinderSwipe", "Description for card.", "http://example.com/example.png"); // title, desc, imgUrl (*)
 ```
+
+(*) Override CardModel for more fields if you want.
 
 #### Init CardStackAdapter and add model
 
 ```java
-SimpleCardStackAdapter adapter = new SimpleCardStackAdapter(this);
-adapter.add(cardModel);
+SimpleCardStackAdapter cardAdapter = new SimpleCardStackAdapter(this);
+cardAdapter.add(cardModel);
 ```
 
 #### Init CardContainer and set adapter
 
 ```java
-mCardContainer = (CardContainer) findViewById(R.id.cardContainer);
-mCardContainer.setAdapter(adapter);
+CardContainer cardContainer = (CardContainer) findViewById(R.id.cardContainer);
+cardContainer.setAdapter(cardAdapter);
 ```
 
 ## Custom
@@ -49,60 +51,69 @@ mCardContainer.setAdapter(adapter);
 #### Add SwipeListener
 
 ```java
-mCardContainer.setOnSwipeListener(new CardContainer.onSwipeListener() {
-    @Override
-    public void onSwipe(float scrollProgressPercent) {
-        View view = mCardContainer.getSelectedView();
-        view.findViewById(R.id.item_swipe_right_indicator)
-                .setAlpha(scrollProgressPercent < 0 ? -scrollProgressPercent : 0);
-        view.findViewById(R.id.item_swipe_left_indicator)
-                .setAlpha(scrollProgressPercent > 0 ? scrollProgressPercent : 0);
+private void addSwipeListener(final CardContainer cardContainer) {
+    cardContainer.setOnSwipeListener(new CardContainer.onSwipeListener() {
+        @Override
+        public void onSwipe(float scrollProgressPercent) {
+            View view = cardContainer.getSelectedView();
+            view.findViewById(R.id.item_swipe_right_indicator)
+                    .setAlpha(scrollProgressPercent < 0 ? -scrollProgressPercent : 0);
+            view.findViewById(R.id.item_swipe_left_indicator)
+                    .setAlpha(scrollProgressPercent > 0 ? scrollProgressPercent : 0);
 
-    }
-});
+        }
+    });
+}
 ```
 
 #### Add DissmissListener to CardModel
 
 ```java
-cardModel.setOnCardDismissedListener(new CardModel.OnCardDismissedListener() {
-    @Override
-    public void onLike(final CardContainer.OnLikeListener cb) {
-        Log.i(TAG, "I like the card");
-        new MaterialDialog.Builder(MainActivity.this)
-                .title(R.string.dialog_title)
-                .content(R.string.dialog_content)
-                .positiveText(R.string.dialog_positive_text)
-                .negativeText(R.string.dialog_negative_text)
-                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        Log.i(TAG, "I choose positive.");
-                        cb.choose();
-                    }
-                })
-                .onNegative(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        Log.i(TAG, "I choose negative.");
-                        cb.unchoose();
-                    }
-                })
-                .cancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        Log.i(TAG, "cancel");
-                        cb.unchoose();
-                    }
-                })
-                .show();
-    }
+private void addDissmissListener(CardModel cardModel) {
+    cardModel.setOnCardDismissedListener(new CardModel.OnCardDismissedListener() {
+        @Override
+        public void onLike(final CardContainer.OnLikeListener callback) {
+            Log.i(TAG, "I like the card");
+            openDialog(callback);
+        }
 
-    @Override
-    public void onDislike() {
-        Log.i(TAG, "I dislike the card");
-    }
-});
+        @Override
+        public void onDislike() {
+            Log.i(TAG, "I dislike the card");
+        }
+    });
+}
+
+private void openDialog(final CardContainer.OnLikeListener callback) {
+    new MaterialDialog.Builder(MainActivity.this)
+            .title(R.string.dialog_title)
+            .content(R.string.dialog_content)
+            .positiveText(R.string.dialog_positive_text)
+            .negativeText(R.string.dialog_negative_text)
+            .onPositive(new MaterialDialog.SingleButtonCallback() {
+                @Override
+                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                    Log.i(TAG, "I choose positive.");
+                    callback.choose();
+                }
+            })
+            .onNegative(new MaterialDialog.SingleButtonCallback() {
+                @Override
+                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                    Log.i(TAG, "I choose negative.");
+                    callback.unchoose();
+                }
+            })
+            .cancelListener(new DialogInterface.OnCancelListener() {
+                @Override
+                public void onCancel(DialogInterface dialog) {
+                    Log.i(TAG, "cancel");
+                    callback.unchoose();
+                }
+            })
+            .show();
+
+}
 ```
 
 
