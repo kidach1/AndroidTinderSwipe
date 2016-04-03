@@ -378,7 +378,7 @@ class CardContainer : AdapterView<ListAdapter> {
                 PropertyValuesHolder.ofFloat("rotation", Math.toDegrees(0.0).toFloat()),
                 PropertyValuesHolder.ofFloat("pivotX", topCard.width / 2.0f),
                 PropertyValuesHolder.ofFloat("pivotY", topCard.height / 2.0f))
-                .setDuration(100)
+                .setDuration(150)
         animator.interpolator = AccelerateInterpolator()
         animator.start()
     }
