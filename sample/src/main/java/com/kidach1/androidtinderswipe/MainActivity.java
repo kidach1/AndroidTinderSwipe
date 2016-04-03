@@ -16,6 +16,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final static String TAG = MainActivity.class.getSimpleName();
     private CardContainer mCardContainer;
     private List<String> imgs = Arrays.asList(
             "http://img.peco-japan.com/image/93127",
@@ -36,35 +37,39 @@ public class MainActivity extends AppCompatActivity {
             cardModel.setOnClickListener(new CardModel.OnClickListener() {
                 @Override
                 public void OnClickListener() {
-                    Log.i("Swipeable Cards", "I am pressing the card");
+                    Log.i(TAG, "touch the card");
                 }
             });
 
             cardModel.setOnCardDismissedListener(new CardModel.OnCardDismissedListener() {
+                // dissmiss for like
                 @Override
                 public void onLike(final CardContainer.OnLikeListener cb) {
-                    Log.i("Swipeable Cards", "dissmiss the card");
+                    Log.i(TAG, "I like the card");
                     new AlertDialog.Builder(MainActivity.this)
                             .setTitle("title")
                             .setMessage("message")
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
+                                    Log.i(TAG, "I choose positive.");
                                     cb.choose();
                                 }
                             })
                             .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
+                                    Log.i(TAG, "I choose negative.");
                                     cb.unchoose();
                                 }
                             })
                             .show();
                 }
 
+                // dissmiss for dislike
                 @Override
                 public void onDislike() {
-                    Log.i("Swipeable Cards", "I dislike the card");
+                    Log.i(TAG, "I dislike the card");
                 }
             });
 
