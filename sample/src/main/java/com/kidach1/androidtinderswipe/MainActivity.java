@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mCardContainer = (CardContainer) findViewById(R.id.layoutview);
+        mCardContainer = (CardContainer) findViewById(R.id.cardContainer);
         SimpleCardStackAdapter adapter = new SimpleCardStackAdapter(this);
 
         for (int i = 0; i < 8; i++) {
