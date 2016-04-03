@@ -32,9 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mCardContainer = (CardContainer) findViewById(R.id.cardContainer);
         SimpleCardStackAdapter adapter = new SimpleCardStackAdapter(this);
-
         for (int i = 0; i < 8; i++) {
             CardModel cardModel = new CardModel("TinderSwipe", "Description for card.", imgs.get(i%4));
             cardModel.setOnClickListener(new CardModel.OnClickListener() {
@@ -86,7 +84,9 @@ public class MainActivity extends AppCompatActivity {
             adapter.add(cardModel);
         }
 
+        mCardContainer = (CardContainer) findViewById(R.id.cardContainer);
         mCardContainer.setAdapter(adapter);
+
         mCardContainer.setOnSwipeListener(new CardContainer.onSwipeListener() {
             @Override
             public void onSwipe(float scrollProgressPercent) {
