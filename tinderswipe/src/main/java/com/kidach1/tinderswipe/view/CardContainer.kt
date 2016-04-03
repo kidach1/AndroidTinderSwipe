@@ -28,9 +28,14 @@ import com.kidach1.tinderswipe.R
 import com.kidach1.tinderswipe.model.CardModel
 import com.kidach1.tinderswipe.model.Orientations.Orientation
 
-import java.util.Random
-
 class CardContainer : AdapterView<ListAdapter> {
+
+    companion object {
+        val INVALID_POINTER_ID = -1
+        private val DISORDERED_MAX_ROTATION_RADIANS = Math.PI / 64
+        private val TAG = CardContainer::class.java.getSimpleName()
+    }
+
     private var mActivePointerId = INVALID_POINTER_ID
     private var mNumberOfCards = -1
     private val mDataSetObserver = object : DataSetObserver() {
@@ -274,7 +279,7 @@ class CardContainer : AdapterView<ListAdapter> {
         if (mGestureDetector!!.onTouchEvent(event)) {
             return true
         }
-        Log.d("Touch Event", MotionEvent.actionToString(event.actionMasked) + " ")
+        Log.i(TAG + ": Touch Event", MotionEvent.actionToString(event.actionMasked) + " ")
         val pointerIndex: Int
         val x: Float
         val y: Float
@@ -310,6 +315,8 @@ class CardContainer : AdapterView<ListAdapter> {
 
                 dx = x - mLastTouchX
                 dy = y - mLastTouchY
+
+                Log.i(TAG + ": Action move params", x.toString() + y.toString() + dx.toString() + dy.toString())
 
                 if (Math.abs(dx) > mTouchSlop || Math.abs(dy) > mTouchSlop) {
                     mDragging = true
@@ -452,7 +459,7 @@ class CardContainer : AdapterView<ListAdapter> {
 
     private inner class GestureListener : SimpleOnGestureListener() {
         override fun onFling(e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
-            Log.d("Fling", "Fling with $velocityX, $velocityY")
+            Log.i(TAG + ": Fling", "Fling with $velocityX, $velocityY")
             val topCard = mTopCard
             val dx = e2.x - e1.x
             if (Math.abs(dx) > mTouchSlop &&
@@ -536,10 +543,5 @@ class CardContainer : AdapterView<ListAdapter> {
         fun choose()
 
         fun unchoose()
-    }
-
-    companion object {
-        val INVALID_POINTER_ID = -1
-        private val DISORDERED_MAX_ROTATION_RADIANS = Math.PI / 64
     }
 }
