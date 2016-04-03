@@ -21,8 +21,8 @@ class SimpleCardStackAdapter(val mContext: Context) : CardStackAdapter(mContext)
 
         (convertView?.findViewById(R.id.titleView) as TextView).text = model.name
         (convertView?.findViewById(R.id.descriptionView) as TextView).text = model.description
-        val imageView = (convertView?.findViewById(R.id.imageView) as ImageView);
-        Picasso.with(mContext).load(model.cardImageUrl).into(imageView);
+//        val imageView = (convertView?.findViewById(R.id.imageView) as ImageView);
+//        Picasso.with(mContext).load(model.cardImageUrl).into(imageView);
 
         return convertView!!
     }
