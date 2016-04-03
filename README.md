@@ -112,7 +112,6 @@ private void openDialog(final CardContainer.OnLikeListener callback) {
                 }
             })
             .show();
-
 }
 ```
 
