@@ -492,7 +492,7 @@ class CardContainer : AdapterView<ListAdapter> {
                         cardModel.onCardDismissedListener?.onLike(object : OnLikeListener {
                             override fun choose() {
                                 val arbitraryVelocityX = 100f
-                                val arbitraryDuration: Long = 50
+                                val arbitraryDuration = 50L
                                 Log.i(TAG, " duration:" + duration + " targetX:" + targetX + " targetY:" + targetY + " velocityX:" + velocityX)
                                 cardAnimate(topCard, arbitraryDuration, targetX, targetY, arbitraryVelocityX)
                             }
