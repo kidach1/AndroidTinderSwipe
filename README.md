@@ -124,7 +124,7 @@ Inspired by `Swipeable-Cards` in [kikoso](https://github.com/kikoso).
 License
 -------
 
-    Copyright 2015 kidach1
+    Copyright 2016 kidach1
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
