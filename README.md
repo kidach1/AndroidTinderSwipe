@@ -30,7 +30,7 @@ dependencies {
 CardModel cardModel = new CardModel("TinderSwipe", "Description for card.", "http://example.com/example.png"); // title, desc, imgUrl ※
 ```
 
-※ Override CardModel for more fields if you want.
+※ Extend CardModel for more fields if you want.
 
 #### Init CardStackAdapter and add model
 
